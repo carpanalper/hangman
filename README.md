@@ -20,8 +20,8 @@ In our game the player has 5 lives. It means you can only make 4 wrong guesses b
 
 ## File Structure 
 
-`main.py`: Main script to execute the program
-`utils/game.py`: Contains functions to operate the game, to ensure smooth flow of thee game under the class "Hangman"
+`main.py`: Main script to execute the program\
+`utils/game.py`: Contains functions to operate the game, to ensure smooth flow of thee game under the class "Hangman"\
 `draft/draft.py`: Contains experimental functions for the preperation for coding game.py. 
 
 ## Installation & Usage
