@@ -2,9 +2,11 @@
 
 ## Introduction
 
-**Hangman** is a well-known game which players try to guess a word letter by letter\
-Each turn the player makes a guess and if the secret word contains the guessed letter, then the game operator reveals the position of the correctly guessed letters. If not the operator starts drawing a body part of a man who is meant to be hanged after too many wrong guesses\ 
-**The goal** is guessing all the letters correctly before running out of the lives and saving the man from getting hanged\
+**Hangman** is a well-known game which players try to guess a word letter by letter.
+
+Each turn the player makes a guess and if the secret word contains the guessed letter, then the game operator reveals the position of the correctly guessed letters. If not the operator starts drawing a body part of a man who is meant to be hanged after too many wrong guesses.
+
+**The goal** is guessing all the letters correctly before running out of the lives and saving the man from getting hanged.
 
 In our game the player has 5 lives. It means you can only make 4 wrong guesses before the game is over. 
 
