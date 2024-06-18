@@ -31,15 +31,15 @@ In our game the player has 5 lives. It means you can only make 4 wrong guesses b
 ```bash
     git clone https://github.com/carpanalper/hangman
     cd hangman
-    ```
+```
 
 2. Make sure you have Python 3.x installed. You can download it from [python.org](https://www.python.org/downloads/).
 
 3. Run the mainscript 
 
-  ```bash
+```bash
     python main.py 
-    ```
+```
 4. Provide a single different letter on each turn until the game is over and Follow the on-screen instructions. To play again run the mainscript again after the session.
 
 ## Contributors
