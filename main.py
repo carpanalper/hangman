@@ -10,6 +10,7 @@ def main():
     """
     while not game.game_over() and not game.well_played():
         game.start_game()
-        game.play()
+        letter = game.play()
+        game.assess_guess(letter)
     return 
 main()

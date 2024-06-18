@@ -17,7 +17,7 @@ class Hangman:
 
     """
     def __init__(self, lives:int = 5):
-            self.possible_words: List[str] = ['becode', 'learning', 'mathematics', 'sessions']
+            self.possible_words: List[str] = ['becode', 'learning', 'mathematics', 'sessions', 'python','fantastic','belgium']
             self.word_to_find: str = random.choice(self.possible_words)
             self.lives: int = lives
             self.correctly_guessed_letters: List[str] = ["_" for i in range(len(self.word_to_find))]
@@ -35,7 +35,6 @@ class Hangman:
         Check if the guess made before
         Warns the user accordingly
         Counts the turns
-        Check if the guess is correct or not 
         """
 
         letter: str = input("Make a guess of a letter: ")
@@ -47,8 +46,14 @@ class Hangman:
             else:
                 self.turn_count += 1 
                 break
-            return 
+        return letter
 
+    def assess_guess(self, letter):
+        """
+        Check if the guess is correct or not 
+        if its correct reveals the letter
+        if not counts error 
+        """
         if letter not in self.word_to_find:
             self.wrongly_guessed_letters.append(letter)
             self.error_count += 1   
