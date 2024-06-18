@@ -26,7 +26,12 @@ In our game the player has 5 lives. It means you can only make 4 wrong guesses b
 
 ## Installation & Usage
 
-1. Clone the repository:
+1. Clone the repository: 
+
+```bash
+    git clone https://github.com/carpanalper/hangman
+    cd hangman
+    ```
 
 2. Make sure you have Python 3.x installed. You can download it from [python.org](https://www.python.org/downloads/).
 
