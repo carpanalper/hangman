@@ -4,7 +4,7 @@ from typing import List
 
 class Hangman:
     """
-    Hangman class inclues functions and variables to organize the flow of game "Hangman"
+    Hangman class includes functions and variables to organize the flow of the game "Hangman".
     """
     def __init__(self, lives: int = 5):
         self.possible_words: List[str] = ['becode', 'learning', 'mathematics', 'sessions', 'python', 'fantastic', 'belgium']
@@ -49,7 +49,7 @@ class Hangman:
 
 # Streamlit app
 def main():
-    st.title("Hangman")
+    st.title("Hangman Game")
     
     if 'game' not in st.session_state:
         st.session_state.game = Hangman()
@@ -58,27 +58,27 @@ def main():
     current_state, lives, errors, wrong_guesses = current_game.start_game()
 
     st.write(f"Word: {current_state}")
-    st.write(f"Lives: {lives}")
+    st.write(f"Lives Remaining: {lives}")
     st.write(f"Errors: {errors}")
-    st.write(f"Missed: {wrong_guesses}")
+    st.write(f"Wrong Guesses: {wrong_guesses}")
 
     letter = st.text_input("Guess a letter:", max_chars=1)
 
-    if st.button("Shoot"):
+    if st.button("Guess"):
         if letter:
             if current_game.play(letter):
                 current_game.assess_guess(letter)
                 if current_game.well_played():
-                    st.success(f"Congrats! You made it: '{current_game.word_to_find}'")
-                    st.session_state.game = Hangman()  # Yeni oyuna başla
+                    st.success(f"Congratulations! You found the word: '{current_game.word_to_find}'")
+                    st.session_state.game = Hangman()  # Start a new game
             else:
-                st.warning("Already guessed or invalid guess.")
+                st.warning("You have already guessed this letter or your input is invalid.")
         else:
-            st.warning("Guess a LETTER")
+            st.warning("Please enter a letter.")
 
     if current_game.game_over():
-        st.error(f"Game Over! The word was: '{current_game.word_to_find}' idi.")
-        st.session_state.game = Hangman()  # Yeni oyuna başla
+        st.error(f"Game Over! The word was '{current_game.word_to_find}'.")
+        st.session_state.game = Hangman()  # Start a new game
 
 if __name__ == "__main__":
     main()
