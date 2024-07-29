@@ -90,7 +90,7 @@ def main():
     if st.session_state.game_over:
         st.write("Just one more turn!")
         if st.button("Restart Game"):
-            st.session_state.game = Hangman()  # Start a new game
+            #st.session_state.game = Hangman()  # Start a new game
             st.session_state.game_over = False  # Reset game over status
 
 
