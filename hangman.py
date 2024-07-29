@@ -49,7 +49,7 @@ class Hangman:
 
 # Streamlit app
 def main():
-    st.title("Hangmanst Game")
+    st.title("Hangman Game")
     
     if 'game' not in st.session_state:
         st.session_state.game = Hangman()
@@ -70,19 +70,20 @@ def main():
         if letter:
             if current_game.play(letter):
                 current_game.assess_guess(letter)
+                # Update the current state after the guess
+                current_state, lives, errors, wrong_guesses = current_game.start_game()
+                
+                # Check for win or loss conditions
                 if current_game.well_played():
                     st.success(f"Congratulations! You found the word: '{current_game.word_to_find}'")
                     st.session_state.game = Hangman()  # Start a new game
-                else:
-                    st.success(f"Good guess! Current word: {current_game.start_game()[0]}")
+                elif current_game.game_over():
+                    st.error(f"Game Over! The word was '{current_game.word_to_find}'.")
+                    st.session_state.game = Hangman()  # Start a new game
             else:
                 st.warning("You have already guessed this letter or your input is invalid.")
         else:
             st.warning("Please enter a letter.")
-
-    if current_game.game_over():
-        st.error(f"Game Over! The word was '{current_game.word_to_find}'.")
-        st.session_state.game = Hangman()  # Start a new game
 
 if __name__ == "__main__":
     main()
