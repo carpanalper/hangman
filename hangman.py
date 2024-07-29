@@ -51,8 +51,11 @@ class Hangman:
 def main():
     st.title("Hangman Game")
     
+    # Initialize game state
     if 'game' not in st.session_state:
         st.session_state.game = Hangman()
+    if 'game_over' not in st.session_state:
+        st.session_state.game_over = False
 
     current_game = st.session_state.game
 
@@ -64,7 +67,7 @@ def main():
         if letter:
             if current_game.play(letter):
                 current_game.assess_guess(letter)
-                
+
                 # Check for win or loss conditions
                 if current_game.well_played():
                     st.session_state.game_over = True
@@ -78,21 +81,18 @@ def main():
             st.warning("Please enter a letter.")
 
     # Display game state
-    if 'game_over' not in st.session_state:
-        st.session_state.game_over = False
-
-    if st.session_state.game_over:
-        st.write("Game Over or You Won!")
-        if st.button("Restart Game"):
-            st.session_state.game = Hangman()  # Start a new game
-            st.session_state.game_over = False  # Reset game over status
-
-    # Always display the current state
     current_state, lives, errors, wrong_guesses = current_game.start_game()
     st.write(f"Word: {current_state}")
     st.write(f"Lives Remaining: {lives}")
     st.write(f"Errors: {errors}")
     st.write(f"Wrong Guesses: {wrong_guesses}")
+
+    # Restart game button
+    if st.session_state.game_over:
+        st.write("Just one more turn!")
+        if st.button("Restart Game"):
+            st.session_state.game = Hangman()  # Start a new game
+            st.session_state.game_over = False  # Reset game over status
 
 if __name__ == "__main__":
     main()
