@@ -1,10 +1,12 @@
 import sys
 import random
 from utils.game import Hangman
+import streamlit as st
 
 game = Hangman()
 
 def main(): 
+    st.title("Sayı Tahmin Oyunu")
     """
     Organizes and run the game using the functions from Hangman class
     """

@@ -1,5 +1,6 @@
 import random
 from typing import List
+import streamlit as st
 
 class Hangman:
     """
