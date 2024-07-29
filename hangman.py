@@ -92,8 +92,7 @@ def main():
         if st.button("Restart Game"):
             st.session_state.game = Hangman()  # Start a new game
             st.session_state.game_over = False  # Reset game over status
-            # Re-initialize the input field for the next game
-            st.experimental_rerun()  # Rerun the script to reset everything
+
 
 if __name__ == "__main__":
     main()
