@@ -41,15 +41,14 @@ class Hangman:
 
     def game_over(self) -> bool:
         """Checks if the game is over."""
-        return self.lives == 0
+        return self.lives <= 0
 
     def well_played(self) -> bool:
         """Checks if the player has guessed the word correctly."""
         return "_" not in self.correctly_guessed_letters
 
-# Streamlit app
 def main():
-    st.title("Hangman Game")
+    st.title("Hangmanst Game")
     
     # Initialize game state
     if 'game' not in st.session_state:
@@ -93,6 +92,8 @@ def main():
         if st.button("Restart Game"):
             st.session_state.game = Hangman()  # Start a new game
             st.session_state.game_over = False  # Reset game over status
+            # Re-initialize the input field for the next game
+            st.experimental_rerun()  # Rerun the script to reset everything
 
 if __name__ == "__main__":
     main()
