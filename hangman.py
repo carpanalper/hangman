@@ -67,10 +67,10 @@ def main():
                 # Check for win or loss conditions
                 if current_game.well_played():
                     st.success(f"Congratulations! You found the word: '{current_game.word_to_find}'")
-                    st.session_state.game = Hangman()  # Start a new game
+                    st.session_state.game_over = True
                 elif current_game.game_over():
                     st.error(f"Game Over! The word was '{current_game.word_to_find}'.")
-                    st.session_state.game = Hangman()  # Start a new game
+                    st.session_state.game_over = True
             else:
                 st.warning("You have already guessed this letter or your input is invalid.")
         else:
@@ -82,6 +82,15 @@ def main():
     st.write(f"Lives Remaining: {lives}")
     st.write(f"Errors: {errors}")
     st.write(f"Wrong Guesses: {wrong_guesses}")
+
+    # Restart game button
+    if 'game_over' not in st.session_state:
+        st.session_state.game_over = False
+
+    if st.session_state.game_over:
+        if st.button("Restart Game"):
+            st.session_state.game = Hangman()  # Start a new game
+            st.session_state.game_over = False  # Reset game over status
 
 if __name__ == "__main__":
     main()
