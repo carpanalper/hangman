@@ -55,6 +55,8 @@ def main():
         st.session_state.game = Hangman()
 
     current_game = st.session_state.game
+    
+    # Process the game state at the beginning
     current_state, lives, errors, wrong_guesses = current_game.start_game()
 
     # Display current state of the game
@@ -84,6 +86,13 @@ def main():
                 st.warning("You have already guessed this letter or your input is invalid.")
         else:
             st.warning("Please enter a letter.")
+
+    # Update display after processing guess
+    current_state, lives, errors, wrong_guesses = current_game.start_game()
+    st.write(f"Word: {current_state}")
+    st.write(f"Lives Remaining: {lives}")
+    st.write(f"Errors: {errors}")
+    st.write(f"Wrong Guesses: {wrong_guesses}")
 
 if __name__ == "__main__":
     main()
